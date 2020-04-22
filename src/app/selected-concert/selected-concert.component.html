@@ -1,0 +1,86 @@
+
+<body>
+<br><br><br>
+<div class="row ">
+    <div class=col-sm-9 >
+        <div class="concert jumbotron">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="assets/3.jpg" alt="missing....">
+            </div>
+            <div class="col-sm-6" style="padding-left:7%; font-size:18px;">
+                <h1 style=" font-size:35px;"> {{selectedConcert.name}}  </h1>
+                {{ selectedConcert.genre }} <br>
+                <h3> {{selectedConcert.date}}</h3>
+                  
+            <div class="row">
+                    <div class="col-sm-6" style="border-right: 1px solid #e36054;">
+                        <span class="glyphicon glyphicon-map-marker" style="font-size: 15px;">  {{selectedConcert.location}} </span>
+                        
+                    </div>
+                    <div class=col-sm-6>
+                       &nbsp; &nbsp; {{"Rs. "+selectedConcert.price+" / -"}}
+                    </div>
+            </div>      
+            <div class="row" style="margin-top:5%;">
+                <div class="col-sm-6">
+                   Starts from {{selectedConcert.time}}
+                    
+                </div>
+                <div class=col-sm-6>
+                   
+                </div>
+            </div>         
+            </div>
+        </div>
+        </div>
+       
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-primary btn-lg" (click)="buy()">BUY TICKETS</button>
+    </div>
+    <div class="col-sm-1 location">
+        
+    </div>
+</div>
+<span style="font-size:large; padding-top:3%; padding-left:7%; "> CELEBRITIES & ARTISTS : </span>
+<div class="row list2">
+    
+    <div class="col-sm-4 row" *ngFor="let x of selectedConcert.celebrities;" >
+        <div class="col-sm-4">
+            <img [src]="x.imgUrl" > 
+         </div>
+        <div class="col-sm-8" style="padding-top:5%">
+            {{x.name}}
+        </div>
+    </div>
+</div>  
+<div class="row">
+    <div class="col-sm-7 terms jumbotron">
+            <h3>ABOUT : </h3>
+            <h5 style="line-height:3rem; padding-left:5%; font-size:18px">  {{ selectedConcert.about.description }}</h5>
+            <h3>Terms & Conditions :    </h3>    
+            <ul >
+                <li>
+                    Children below 16 years of age are strictly not allowed inside the venue. This includes infants, toddlers and kids of any specific age below 16 years.
+                </li>
+                <li>
+                    Tickets once purchased, will not be refunded.
+                </li>
+                <li>
+                    Entry to the venue starts 30 minutes prior to showtime.
+                </li>
+                <li>
+                    Lineup or billed attractions are subjected to change.
+                </li>
+            </ul>
+            
+    </div>
+    <div class="col-sm-3 terms jumbotron">
+           <h2> VENUE </h2> 
+           <span class="glyphicon glyphicon-map-marker" style="font-size: 30px;"> <span style="font-size:20px; padding-left:3px; "> {{selectedConcert.venue}}  </span> </span>
+
+    </div>
+</div>
+
+</body>

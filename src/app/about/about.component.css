@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+.jumbotron{
+    margin-top:3%;
+    border:1px solid #e63b2c;
+    
+    margin-bottom:3%;
+    background: linear-gradient(45deg,#2d2833,#202333);
+    border-radius: 0;
+}

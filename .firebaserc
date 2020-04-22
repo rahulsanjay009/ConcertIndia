@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "concerts-2edce": {
+      "hosting": {
+        "project1": [
+          "concerts-2edce"
+        ]
+      }
+    }
+  }
+}

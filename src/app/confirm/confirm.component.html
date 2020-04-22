@@ -1,0 +1,28 @@
+<div class="row" style="margin-top:5%">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+    <div class="concert jumbotron">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="assets/3.jpg" alt="missing....">
+            </div>
+            <div class="col-sm-6" style="padding-left:7%; font-size:18px;">
+                <h1 style=" font-size:35px;"> {{selectedConcert.name}} </h1>
+                <h3> {{selectedConcert.date}}</h3>
+                    {{selectedConcert.location}} 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6"></div>
+                <div class="col-sm-4" style="padding-left:5%">
+                    TOTAL : &nbsp;&nbsp;&nbsp; Rs {{price}} /-
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary" (click)="confirm()">CONFIRM</button>
+                </div>
+        </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-2"></div>
+</div>

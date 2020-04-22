@@ -1,0 +1,33 @@
+<div *ngIf="myconcerts">
+<div class="row cardy" *ngFor="let selectedConcert of myconcerts">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+    <div class="concert jumbotron">
+        <div class="row" >
+            <div class="col-sm-4" align=center>
+                <ngx-qrcode qrc-element-type="canvas"  qrc-value="{{selectedConcert.concert.name + ' ' +  name +' ' + email  }}" >       </ngx-qrcode>
+            </div>
+            <div class="col-sm-8" style=" font-size:18px;">
+
+                <h1 style=" font-size:35px;"> {{selectedConcert.concert.name}} &nbsp; | &nbsp; <span style="font-size:25px; "> {{selectedConcert.concert.genre}} </span> </h1>
+                <h3> {{selectedConcert.concert.date}} &nbsp; &nbsp; &nbsp; {{selectedConcert.concert.time}}</h3>
+                <span class="glyphicon glyphicon-map-marker" style="font-size: 20px; font-weight: 500;    ">  {{selectedConcert.concert.location}}   </span>  <br><br>
+            <div class="row">
+                <div class="col-sm-6" style="padding-left:5%">
+                    TOTAL : &nbsp;&nbsp;&nbsp; Rs {{ (selectedConcert.qty) * (selectedConcert.concert.price)}} /-
+                </div>
+                <div class="col-sm-6">
+                    ADMIT : {{selectedConcert.qty}} &nbsp;   &nbsp;  &nbsp;   &nbsp; 
+                    CONFIRMED
+                </div>
+             </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+</div>
+<div *ngIf="myconcerts.length==0">
+        <h2 align=center style="margin-top:20%"> You have no purchases</h2>
+</div>

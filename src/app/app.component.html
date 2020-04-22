@@ -1,13 +1,38 @@
-<div class="row header">
-      <div class=col-sm-2>
-          Logo
+<html>
+
+
+<body>
+<div class="row header " id=myDIV>
+      <div class=col-sm-2 align=center>
+           <span class="sadd">ConcertIndia</span>
       </div>
       <div class="col-sm-6">
-
+        <ul>
+          <li><a  [routerLink]="['home']" id=home routerLinkActive="current">Concerts</a></li>
+          <li><a  routerLink="about" id=about routerLinkActive="current">About</a></li>
+          <li *ngIf="f"><a  routerLink="mytickets" routerLinkActive="current">MyTickets</a></li>
+          
+        </ul>
+        
       </div>
       <div class="col-sm-4">
-
+        <div *ngIf="f">
+          <ul>
+            <li><a routerLink="home" >Hello {{changer}}</a></li>
+            <li><a  (click)="logout()">LogOut</a></li>
+          </ul>
+        </div>
+        <div *ngIf="!f">
+          <ul>
+            <li><a  routerLink="register" routerLinkActive="current">Register</a></li>
+            <li><a  routerLink="signin" routerLinkActive="current">SignIn</a></li>
+          </ul>
+        </div>
       </div>
 </div>  
 
-<router-outlet></router-outlet>
+<router-outlet>
+  
+</router-outlet>
+</body>
+</html>

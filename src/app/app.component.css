@@ -1,4 +1,53 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
+
+ul li a{
+    color:white;
+    text-decoration: none;
+    padding:2%;
+    cursor: pointer;
+  }
+ul li a:hover{
+    transition: 500ms;
+    border-bottom: 3px solid black;
+}
+.sadd{
+  font-family: 'Six Caps', sans-serif;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+input [type=text]{
+  
+  border:1px solid #e63b2c;
+  color:black;
+  background-color:#e63b2c ;
+}
+input [type=button]{
+  border:0;
+  background-color: none;
+}
 .header{
-    padding-top:10px;
-    padding-bottom:10px;
+    background: linear-gradient(45deg,#e36054,#e63b2c) ;
+    padding-top:1%;
+    padding-bottom:0.5%;
+    
+    position: sticky;
+    top:0%;
+    z-index: 1;
+    font-family: 'Nova Flat';font-size: 18px;
+}
+.current{
+    transition: 1000ms;
+    border-bottom: 3px solid white;
+    
+}
+ul{
+    list-style-type: none;   
+}
+
+li{
+    display: inline;   
+    padding-left:6%;
+
 }

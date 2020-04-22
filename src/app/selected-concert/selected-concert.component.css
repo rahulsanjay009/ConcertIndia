@@ -1,0 +1,70 @@
+
+body{
+    background: linear-gradient(45deg,#403f3c,#131722);
+    color:white;
+    
+}
+.concert{
+    margin-left:10%;
+    border:1px solid #e63b2c;
+    padding-bottom:5%;
+    margin-bottom:3%;
+    background: linear-gradient(45deg,#2d2833,#202333);
+    border-radius: 0;
+}
+.list2 .col-sm-4{    
+    padding-left:7%;
+    text-align: center;
+    padding-top:2%;
+    
+}
+.list2 img{
+    
+    height:70px;
+    border-radius:5rem;
+}
+.terms{
+    margin-top:3%;
+    margin-left:5%;
+    width:80%;
+    background-color: #2d2833;
+    border:2px solid #e36054;
+    border-radius: 0;
+}
+.concert img{
+    width:100%;
+    height:100%;
+    position: relative;
+    margin:2%;
+    border-bottom:2px solid #e63b2c;
+    border-radius:3rem;
+}
+li{
+    line-height: 5rem;
+}
+.btn{
+    transform: translateX(-50%);
+    margin-top:40%;
+    border-radius:0;
+    border:0;
+    background: linear-gradient(45deg,#e36054,#e63b2c) ; 
+}
+.btn:hover{
+    background: linear-gradient(45deg,#db7c73,#e36054)  ;
+}
+
+
+@media only screen and (max-width:600px){
+    .btn{
+        transform: translateX(0);
+        margin-left:10%;
+        border-radius:0;
+        margin-top:0;
+        border:0;
+        background: linear-gradient(45deg,#e36054,#e63b2c) ; 
+    }
+    .concertContainer{
+        box-shadow: 0 0 1px 1px rgba(0,0,0,0.2);
+    }
+    
+}

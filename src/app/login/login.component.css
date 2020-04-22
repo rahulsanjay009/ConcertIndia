@@ -1,0 +1,35 @@
+.box{
+    border:1.5px solid #e36054; 
+    background: linear-gradient(45deg,#2d2833,#202333);
+    border-radius: 0;
+    margin-top: 5%;
+    box-shadow: 0 0 4px 2px rgba(0,0,0,0.2);
+}
+
+.form-group{
+    padding-left: 20%;
+}
+.form-control{
+    border-radius:0;
+    padding:5%;
+    border:0;
+    background: linear-gradient(45deg,#2d2833,#0a0d18);
+    width:80%;
+    
+}
+
+.form-control:hover,.form-control:focus{
+    
+    border-left:5px solid #e36054;
+}
+
+.btn{
+    border-radius:0;
+    border:0;
+    background: linear-gradient(45deg,#e36054,#e63b2c) ; 
+    font-size: 15px;
+    width:30%;
+}
+.btn:hover{
+    background: linear-gradient(45deg,#db7c73,#e36054)  ;
+}
