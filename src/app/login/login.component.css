@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bahianita&family=Crete+Round:ital@1&family=Indie+Flower&family=Oswald&family=Permanent+Marker&display=swap');
 .box{
     border:1.5px solid #e36054; 
     background: linear-gradient(45deg,#2d2833,#202333);
     border-radius: 0;
     margin-top: 5%;
     box-shadow: 0 0 4px 2px rgba(0,0,0,0.2);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    letter-spacing: 1px;
 }
 
 .form-group{
@@ -18,7 +23,7 @@
     
 }
 
-.form-control:hover,.form-control:focus{
+.form-control:focus{
     
     border-left:5px solid #e36054;
 }

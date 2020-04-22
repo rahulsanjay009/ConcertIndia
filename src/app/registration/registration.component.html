@@ -8,14 +8,14 @@
                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                        <input type="text"placeholder='enter username' formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" style="color:white"/>
                         <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                             <div *ngIf="f.username.errors.required">Username is required</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email-Id</label>
-                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                        <input style="color:white" type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder='enter email'/>
                         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                             <div *ngIf="f.email.errors.required">Email Id is required</div>
                             <div *ngIf="f.email.errors.pattern">Please provide a valid email-id</div>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <input style="color:white" placeholder='enter password' type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Password is required</div>
                             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label for="cpassword">Confirm Password</label>
-                        <input type="password" formControlName="cpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }" />
+                        <input style="color:white" type="password" placeholder='confirm password' formControlName="cpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cpassword.errors }" />
                         <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
                             <div *ngIf="f.cpassword.errors.required">Password is required</div>
                             <div *ngIf="f.cpassword.errors.minlength">Password must be at least 6 characters</div>
@@ -39,11 +39,11 @@
                     </div>
                     
                     <div class="form-group">
-                        <button [disabled]="loading" class="btn btn-primary">
+                        <button [disabled]="loading" class="btn">
                             <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                             Register
                         </button>
-                        <a routerLink="/home" class="btn btn-primary" style="margin-left:4%;">Cancel</a>
+                        <a routerLink="/home" class="btn " style="margin-left:4%;">Cancel</a>
                     </div>
                 </form>
             </form>

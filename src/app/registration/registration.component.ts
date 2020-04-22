@@ -21,7 +21,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    window.scrollTo(0,0);
 
     this.loading=false;
     this.registerForm = this.fb.group({
@@ -33,6 +33,7 @@ export class RegistrationComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       cpassword: ['', [Validators.required, Validators.minLength(6)]]
     },{validator: this.checkIfMatchingPasswords()});
+    
   }
 
   get f() { 
@@ -80,13 +81,13 @@ export class RegistrationComponent implements OnInit {
           console.log(res);
         });
         localStorage.setItem('loggedIn',JSON.stringify(this.item));
-        this._snackBar.open("Sucessfully Registered^_^!Please check your mail(probably in spam)!!", "",{
+        this._snackBar.open("Sucessfully Registered  ^_^!  Please check your mail (probably in spam) !!", "",{
           duration: 3000,
         });    
         let apikey="83B7DE98A7D5948A27A2444BC6677D847EF19EEB336633695D45EA2229CB9F79EB25ED8269E4061AD4812AC4CA700452";
         let bodyText="Hello "+this.item.name+", you are sucessfully registered for Sofar!!*_*!!";
         let bodyHtml="<br/>Donot miss your favourite concert...<br/>Book the tickets in our website and experience the joy!<br/>Thank you..";
-        let subject="Sucessfull Registration for Sofar^_^!";
+        let subject="Sucessfull Registration for ConcertIndia ^_^!";
         let replyTo="abbhinav.nomulla656@gmail.com"
         this.matter="apikey="+apikey+"&from="+replyTo+"&fromName=abbhinav nomulla&to="+this.item.email+"&bodyText="+bodyText+"&bodyHtml="+bodyHtml+"&subject="+subject+"&replyTo="+replyTo;
         this.fs.sendemail(this.matter);

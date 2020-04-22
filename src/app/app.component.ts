@@ -20,7 +20,7 @@ export class AppComponent {
     localStorage.clear();
     this.f=0;
     this.changer="";
-    this.snackbar.open(" Logged Out successfully . . . ", "",{
+    this.snackbar.open(" Logging you out  . . . ", "",{
       duration: 3000,
     });  
     setTimeout(()=>{

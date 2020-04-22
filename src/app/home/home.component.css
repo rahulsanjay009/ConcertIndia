@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
 #carouselExampleIndicators{
-    margin-left:12%;
-    margin-right:12%;
+    opacity: 0.7;
     border:2px solid #e36054;
     z-index:0;
 }
@@ -12,12 +13,27 @@
     border:1px solid #e36054;
     background: linear-gradient(45deg,#2d2833,#202333);
     border-radius: 0;
+    opacity: 0.8;
+}
+.card:hover{
+    transition: 300ms;
+    box-shadow: 0 0 8px 8px black;
+}
+
+.card-group-item{
+    font-size:13px;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 400;
 }
 .card-title{
     font-size:17px;
+    font-family: 'Oswald', sans-serif;
+    
 }
 .form-check-label{
     padding-left:5%;
+    font-weight: 400;
 }
 .title{
     font-size: 15px;
@@ -45,6 +61,12 @@ a{
     border:0;
     background: linear-gradient(45deg,#e36054,#e63b2c) ; 
     font-size: 20px;
+    
+}
+.btn:focus{
+    box-shadow: 0 0 2px 4px rgba(0,0,0,0.2);
+    border-width: 0;
+    border:none;
 }
 .btn:hover{
     background: linear-gradient(45deg,#db7c73,#e36054)  ;

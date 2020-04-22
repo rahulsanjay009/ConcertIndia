@@ -8,7 +8,7 @@ export class Concert{
     celebrities: {name:string,imgUrl:string}[];
     about:{
         description:string,
-        terms:string
+        terms:string[]
     };
     imgUrl:string;
     price?:number;

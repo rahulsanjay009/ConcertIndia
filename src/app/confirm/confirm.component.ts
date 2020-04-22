@@ -26,7 +26,7 @@ export class ConfirmComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    window.scrollTo(0,0);
       this.pass=JSON.parse(this.route.snapshot.paramMap.get('cnf'));
       this.selectedConcert=this.pass.concert;
       this.price=(this.pass.qty)*this.pass.concert.price;

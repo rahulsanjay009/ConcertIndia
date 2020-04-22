@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Concert } from 'models/concert';
 import { FirebaseService } from '../services/firebase.service';
 
 import {Ittop} from 'models/ittop';
@@ -25,6 +24,7 @@ export class MyTicketsComponent implements OnInit {
         console.log(this.myconcerts);
         this.name=name;
         this.email=JSON.parse(localStorage.getItem('loggedIn')).email;
+        window.scrollTo(0,0);
   }
 
 }

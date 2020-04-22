@@ -7,16 +7,16 @@
             <div class="col-sm-4" align=center>
                 <ngx-qrcode qrc-element-type="canvas"  qrc-value="{{selectedConcert.concert.name + ' ' +  name +' ' + email  }}" >       </ngx-qrcode>
             </div>
-            <div class="col-sm-8" style=" font-size:18px;">
+            <div class="col-sm-8" style=" font-size:18px; font-family: 'Indie Flower', cursive; font-weight:700;">
 
-                <h1 style=" font-size:35px;"> {{selectedConcert.concert.name}} &nbsp; | &nbsp; <span style="font-size:25px; "> {{selectedConcert.concert.genre}} </span> </h1>
-                <h3> {{selectedConcert.concert.date}} &nbsp; &nbsp; &nbsp; {{selectedConcert.concert.time}}</h3>
-                <span class="glyphicon glyphicon-map-marker" style="font-size: 20px; font-weight: 500;    ">  {{selectedConcert.concert.location}}   </span>  <br><br>
+                <h1 style="font-weight: 700; font-size:35px; font-family: 'Indie Flower', cursive;"> {{selectedConcert.concert.name}} &nbsp; | &nbsp; <span style="font-size:25px; font-weight: 700; "> {{selectedConcert.concert.genre}} </span> </h1>
+                <h1 style="font-weight: 700; font-size:25px; font-family: 'Indie Flower', cursive; "> {{selectedConcert.concert.date}} &nbsp; &nbsp; &nbsp; {{selectedConcert.concert.time}}</h1>
+                <span class="glyphicon glyphicon-map-marker" style="font-size: 25px; font-weight: 600;  "><span style="font-family: 'Indie Flower', cursive;">{{selectedConcert.concert.location}} </span>  </span>  <br><br>
             <div class="row">
-                <div class="col-sm-6" style="padding-left:5%">
+                <div class="col-sm-5" style="padding-left:5%; ">
                     TOTAL : &nbsp;&nbsp;&nbsp; Rs {{ (selectedConcert.qty) * (selectedConcert.concert.price)}} /-
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-7">
                     ADMIT : {{selectedConcert.qty}} &nbsp;   &nbsp;  &nbsp;   &nbsp; 
                     CONFIRMED
                 </div>

@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
   });
+  window.scrollTo(0,0);
   }
 
   get f() { return this.registerForm.controls; }  
@@ -42,12 +43,15 @@ export class LoginComponent implements OnInit {
     var ab=this.bk.getUser("users",nn).valueChanges().subscribe((baka: Ittop)=>{
       if(baka==null){
         ab.unsubscribe();
+        this.snackbar.open(" You are not registered or please try again , " + baka.name + "  !^_^!  ", " ",{
+          duration: 3000,
+        });
         this.router.navigate(['/register']);
       }
       else if(a==baka.password){
         ab.unsubscribe();
         localStorage.setItem('loggedIn',JSON.stringify(baka));
-        this.snackbar.open("Welcome to Sofar, "+baka.name+"!^_^!", "",{
+        this.snackbar.open(" Welcome to ConcertIndia , " + baka.name + "  !^_^!  ", " ",{
           duration: 3000,
         });
         setTimeout(()=>{

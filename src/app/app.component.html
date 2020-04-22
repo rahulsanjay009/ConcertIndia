@@ -4,7 +4,7 @@
 <body>
 <div class="row header " id=myDIV>
       <div class=col-sm-2 align=center>
-           <span class="sadd">ConcertIndia</span>
+           <a href=# style="color:white"><span class="sadd">ConcertIndia</span></a>
       </div>
       <div class="col-sm-6">
         <ul>
@@ -31,8 +31,58 @@
       </div>
 </div>  
 
-<router-outlet>
-  
+<router-outlet> 
 </router-outlet>
-</body>
-</html>
+
+<!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+        <h6>About</h6>
+        <p class="text-justify">Meeting people who have shared interests Hearing new music Listening to new bands Getting to see your favorite artist in person Songs are performed differently in concert than they are recorded Getting to interact with your favorite artists between songs If you’re lucky enough, you might even get to meet the band Music doesn't get in. Music is already in. Music simply uncovers what is there, makes you feel emotions that you didn't necessarily know you had inside you, and runs around waking them all up. A rebirth of sorts.</p>
+      </div>
+
+      <div class="col-xs-6 col-md-4">
+        <h6 style="margin-left:16%;">Categories</h6>
+        <ul class="footer-links">
+          <li><a routerLink="/home"><h5><i><b>Concerts</b></i></h5></a></li>
+          <li><a routerLink="/about"><h5><i><b>ABOUT</b></i></h5></a></li>
+          
+            <ul *ngIf="f" style="margin-left: -12%;">
+              <li><a routerLink="home" ><h5><i><b>Hello {{changer}}</b></i></h5></a></li>
+              <li><a  (click)="logout()"><h5><i><b>LogOut</b></i></h5></a></li>
+            </ul>
+          
+            <ul *ngIf="!f" style="margin-left: -12%;">
+              <li><a  routerLink="register" ><h5><i><b>Register</b></i></h5></a></li>
+              <li><a  routerLink="signin" ><h5><i><b>SignIn</b></i></h5></a></li>
+            </ul>
+          
+        </ul>
+      </div>
+
+      
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="page col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2020:
+     <a href="#">ConcertIndia</a>.
+          All Rights Reserved
+        </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <ul class="social-icons">
+          <li><a class="facebook" href="https://www.facebok.com" target=blank><i class="fa fa-facebook"></i></a></li>
+          <li><a class="twitter" href="https://www.twitter.com" target=blank><i class="fa fa-twitter"></i></a></li>
+          <li><a class="dribbble" href="https://www.dribbble.com" target=blank><i class="fa fa-dribbble"></i></a></li>
+          <li><a class="linkedin" href="https://www.linkedin.com" target=blank><i class="fa fa-linkedin"></i></a></li>   
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

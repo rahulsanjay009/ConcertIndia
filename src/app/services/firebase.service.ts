@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Ittop } from 'models/ittop';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
+  state=new BehaviorSubject(false);
   constructor(private http:HttpClient, private db:AngularFirestore ) { }
 
 

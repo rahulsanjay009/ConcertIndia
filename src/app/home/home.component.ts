@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Concert } from 'models/concert';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
-import { MatSnackBar } from '@angular/material';
+
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
@@ -12,54 +13,38 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  concerts:Concert[]=[ {
-    name:'THE ELECTRON',
-    genre:'HipHop',
-    date:'22/06/2010',
-    location:'chennai',
-    venue:'CHENNAI',
-    time:'11:00 PM',
-    celebrities : [{
-      name:'ED SHAREEN',
-      imgUrl:'assets/4.jpg'
-    },
-    {
-      name:'CHARLIE PUTH',
-      imgUrl:'assets/5.jpg'
-    },
-    {
-      name:'ED SHAREEN',
-      imgUrl:'assets/4.jpg'
-    }
-  ],
-    about:{
-      description:'GET YOUR SOULS OUT!!!',
-      terms:'nothing more'
-    },
-    imgUrl:'assets/1.jpg'
-} ];
-alldata:Concert[]=[];
-  matter:string;
+  concerts=new Set();
+  alldata:Concert[]=[];
   rangeFilter:number[]=[];
-  locationFilter:string[]=[];
-  genreFilter:string[]=[];
-  cities:string[]=["Hyderabad","Goa","Mumbai"];
-  genres:string[]=["Rock","Jazz","Electronic","Folk"];
+  locationFilter=new Set();
+  genreFilter=new Set();
+  cities=new Set();
+  genres=new Set();
   SelectedConcert:Concert= {} as Concert;
-  search="";
-  constructor(private router:Router,private fs:FirebaseService,private route:ActivatedRoute, private _snackBar:MatSnackBar ) {
-
-        
-   }
+  matter:string;
+  constructor(private router:Router,private fs:FirebaseService,private _snackBar:MatSnackBar ) { }
 
   ngOnInit() {
+    window.scrollTo(0,0);
       this.fs.getUsers('CONCERTS').valueChanges().subscribe((data:Concert[])=>{
-          this.concerts=data;
           this.alldata=data;
-      })
-      
-      
+          for(let i of data)
+          {
+            this.concerts.add(i);
+            this.cities.add(i.location);
+            this.genres.add(i.genre);
+            console.log(this.cities);
+            console.log(this.genres);
+          }
+          console.log(this.concerts);
+      });
+      /*for(let i of this.cities)
+        this.cit.add(i);
+      for(let i of this.genres)
+        this.gen.add(i);*/
+        
   }
+
   selectedConcert(x){
       this.SelectedConcert=x;
       console.log(this.SelectedConcert);
@@ -67,102 +52,93 @@ alldata:Concert[]=[];
       this.router.navigate(['/selectedConcert/',JSON.stringify(this.SelectedConcert)])
   }
   Apply(){
-    this.concerts=[];
+    this.concerts.clear();
+    let l=0,g=0;
+    console.log(this.cities," cities");
+    console.log(this.genres," genre");
     if(this.rangeFilter.length==0)
     {
       this.rangeFilter[0]=0;
-      this.rangeFilter[1]=100000;
+      this.rangeFilter[1]=10000;
     }
-    if(this.locationFilter.length==0)
+    if(this.locationFilter.size==0)
     {
-      this.locationFilter=this.cities;
+      l=1;
+      for(let i of this.cities)
+        this.locationFilter.add(i);
     }
-    if(this.genreFilter.length==0)
+    if(this.genreFilter.size==0)
     {
-      this.genreFilter=this.genres;
+      g=1;
+      for(let i of this.genres)
+        this.genreFilter.add(i);
     }
-    console.log(this.genreFilter+" genre filter");
-    console.log(this.locationFilter+" location filter");
-    console.log(this.rangeFilter," range filter ");
     for(let i of this.alldata)
     {
-      console.log(i);
       if(Number(i.price)<=this.rangeFilter[1]&&Number(i.price)>=this.rangeFilter[0])
         for(let j of this.locationFilter)
           if(j==i.location)
-          {
             for(let k of this.genreFilter)
               if(k==i.genre)
-              {
-                let it=0
-                for(it=0;it<this.concerts.length;it++)
-                  if(this.concerts[it]==i)
-                    break;
-                if(it==this.concerts.length)
-                  this.concerts.push(i);
-              }
-          }
+                this.concerts.add(i);
     }
-  this.cities=["Hyderabad","Goa","Mumbai"];
-  this.genres=["Rock","Jazz","Electronic","Folk"];
-    console.log(this.cities);
-    console.log(this.genres);
-    console.log(this.concerts);
+    
+    console.log(this.genreFilter," genre filter");
+    console.log(this.locationFilter," location filter");
+    if(l==1)
+      this.locationFilter.clear();
+    if(g==1)
+      this.genreFilter.clear();
+    console.log(this.genreFilter," genre filter");
+    console.log(this.locationFilter," location filter");
+    console.log(this.concerts,"concerts");
   }
-  Reset(){
-    this.fs.getUsers('CONCERTS').valueChanges().subscribe((data:Concert[])=>{
-      this.concerts=data;
-  })
-  this.genreFilter=[];
-  this.locationFilter=[];
-  this.rangeFilter=[];
-    document.forms[0].reset();
-    document.forms[1].reset();
-    document.forms[2].reset();
+  addRange(x){
+      this.rangeFilter[0]=x;   
   }
-  subscribe(x){
-    console.log(x);
-    let apikey="83B7DE98A7D5948A27A2444BC6677D847EF19EEB336633695D45EA2229CB9F79EB25ED8269E4061AD4812AC4CA700452";
-    let bodyText="Hello "+JSON.parse(localStorage.getItem('loggedIn')).name+", you are sucessfully subscribed for Concerts!!*_*!!";
-    console.log(JSON.parse(localStorage.getItem('loggedIn')).name)
-    let bodyHtml="<br/>Do not miss your favourite concert...<br/>Book the tickets in our website and experience the joy!<br/>Thank you..";
-    let subject="Sucessfull Subscription for Concerts^_^!";
-    let replyTo="abbhinav.nomulla656@gmail.com"
-    this.matter="apikey="+apikey+"&from="+replyTo+"&fromName=abbhinav nomulla&to="+x+"&bodyText="+bodyText+"&bodyHtml="+bodyHtml+"&subject="+subject+"&replyTo="+replyTo;
-    this.fs.sendemail(this.matter);
-    this._snackBar.open("Subscribed successfully", "",{
-      duration: 3000,
-    });
-    document.forms[3].reset();
+  addRange1(x){
+      this.rangeFilter[1]=x;   
   }
   addLocation(event,x){
     if(event.currentTarget.checked==true)
-        this.locationFilter.push(x);  
+        this.locationFilter.add(x);  
     else{
-      let baka:string[]=this.locationFilter;
-      this.locationFilter=[]
-      for(let i of baka)
-        if(i!=x)
-          this.locationFilter.push(i);
-      console.log(this.locationFilter);
+      if(this.locationFilter.has(x))
+        this.locationFilter.delete(x);
     }
   }
   addGenre(event,x){
     if(event.currentTarget.checked==true)
-      this.genreFilter.push(x);
+      this.genreFilter.add(x);
     else{
-      let baka:string[]=this.genreFilter;
-      this.genreFilter=[]
-      for(let i of baka)
-        if(i!=x)
-          this.genreFilter.push(i);
-      console.log(this.genreFilter);
+      if(this.genreFilter.has(x))
+        this.genreFilter.delete(x);
     }
   }
-  addRange(x){
-    this.rangeFilter[0]=x;   
-}
-addRange1(x){
-    this.rangeFilter[1]=x;   
-}
+  Reset(){
+    this.concerts.clear();
+    this.fs.getUsers('CONCERTS').valueChanges().subscribe((data:Concert[])=>{
+      for(let i of data)
+        this.concerts.add(i);
+  })
+  this.genreFilter.clear();
+  this.locationFilter.clear();
+  this.rangeFilter=[];
+  document.forms[0].reset();
+  document.forms[1].reset();
+  document.forms[2].reset();
+  }
+  subscribe(x){
+    this._snackBar.open("Subscribed successfully . . . Please check your mail (probably in spam) !!", "",{
+      duration: 3000,
+    });    
+    let apikey="83B7DE98A7D5948A27A2444BC6677D847EF19EEB336633695D45EA2229CB9F79EB25ED8269E4061AD4812AC4CA700452";
+    let bodyText="Hello "+JSON.parse(localStorage.getItem('loggedIn')).name+", you are sucessfully registered for Sofar!!*_*!!";
+    let bodyHtml="<br/>Donot miss your favourite concert...<br/>Book the tickets in our website and experience the joy!<br/>Thank you..";
+    let subject="Sucessfull Subscription for ConcertIndia ^_^ !";
+    let replyTo="abbhinav.nomulla656@gmail.com"
+    this.matter="apikey="+apikey+"&from="+replyTo+"&fromName=abbhinav nomulla&to="+x+"&bodyText="+bodyText+"&bodyHtml="+bodyHtml+"&subject="+subject+"&replyTo="+replyTo;
+    this.fs.sendemail(this.matter);
+    document.forms[3].reset();
+  }
 }
