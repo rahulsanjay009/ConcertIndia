@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Concert } from 'models/concert';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../services/firebase.service';
-
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Ittop } from 'models/ittop';
 
 
 
@@ -22,11 +23,17 @@ export class HomeComponent implements OnInit {
   genres=new Set();
   SelectedConcert:Concert= {} as Concert;
   matter:string;
-  constructor(private router:Router,private fs:FirebaseService,private _snackBar:MatSnackBar ) { }
+  constructor(private router:Router,private fs:FirebaseService,private _snackBar:MatSnackBar,private af:AngularFirestore ) { }
 
   ngOnInit() {
     window.scrollTo(0,0);
-      this.fs.getUsers('CONCERTS').valueChanges().subscribe((data:Concert[])=>{
+    
+    let cnt=0;
+      let x=this.fs.getUsers('CONCERTS').valueChanges().subscribe((data:Concert[])=>{
+        cnt=cnt+1;
+        if(cnt==2)
+            x.unsubscribe();
+        else{
           this.alldata=data;
           for(let i of data)
           {
@@ -37,7 +44,9 @@ export class HomeComponent implements OnInit {
             console.log(this.genres);
           }
           console.log(this.concerts);
+        }
       });
+      
       /*for(let i of this.cities)
         this.cit.add(i);
       for(let i of this.genres)

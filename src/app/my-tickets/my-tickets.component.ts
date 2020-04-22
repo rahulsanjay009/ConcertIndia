@@ -17,9 +17,15 @@ export class MyTicketsComponent implements OnInit {
 
   ngOnInit() {
         var name=JSON.parse(localStorage.getItem('loggedIn')).name;
-        this.fs.getUser('users',name).valueChanges().subscribe((data:Ittop)=>{
-            this.myconcerts.push(...data.myTickets);
-            console.log(data);
+        let cnt=0;
+        let x=this.fs.getUser('users',name).valueChanges().subscribe((data:Ittop)=>{
+          cnt=cnt+1;
+          if(cnt==2)
+            x.unsubscribe();
+          else{
+          this.myconcerts.push(...data.myTickets);
+          console.log(data);
+          }
         });
         console.log(this.myconcerts);
         this.name=name;

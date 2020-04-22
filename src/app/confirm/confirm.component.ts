@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Concert } from 'models/concert';
 import { FirebaseService } from '../services/firebase.service';
 import { Ittop } from 'models/ittop';
-import{MatDialog} from '@angular/material';
+import{MatDialog, MatSnackBar} from '@angular/material';
 import { Pass } from 'models/pass';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import {ConfirmedComponent} from '../confirmed/confirmed.component';
@@ -20,7 +20,7 @@ export class ConfirmComponent implements OnInit {
     qty:number
   }={} as any;
   constructor(private route:ActivatedRoute,private fs:FirebaseService,private dialog:MatDialog,private router:Router,
-    private af:AngularFirestore) { 
+    private af:AngularFirestore,private snackbar:MatSnackBar) { 
 
     
   }
@@ -34,13 +34,19 @@ export class ConfirmComponent implements OnInit {
   confirm(){
     var user:Ittop={} as Ittop;
     
-    var ticket:Pass[]=[];
+    
       var temp=JSON.parse(localStorage.getItem('loggedIn'));
+      if(temp===null){
+          this.snackbar.open(" Please login to buy tickets... ", " ",{
+            duration: 3000,
+          });
+        }
       user.name=temp.name;
       user.email=temp.email;
       user.password=temp.password;
       user.phone="";
       user.myTickets=[];
+      
       
    this.af.collection<Ittop>("users").doc(user.name).get().subscribe((result)=>{
                 if(result.data().myTickets==undefined)
